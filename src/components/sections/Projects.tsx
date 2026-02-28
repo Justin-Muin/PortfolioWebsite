@@ -55,7 +55,7 @@ export default function Projects() {
         {/* Project grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {filtered.map((project, i) => (
-            <RevealWrapper key={project.slug} delay={i * 0.08}>
+            <RevealWrapper key={project.slug} delay={i * 0.08} className="h-full">
               <ProjectCard project={project} />
             </RevealWrapper>
           ))}

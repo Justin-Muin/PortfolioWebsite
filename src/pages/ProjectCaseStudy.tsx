@@ -1,4 +1,5 @@
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useLayoutEffect } from 'react'
+import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Github, ExternalLink, CheckCircle2, AlertTriangle, Lightbulb, Rocket, BookOpen } from 'lucide-react'
 import { projects, personalInfo } from '@/data'
 import Badge from '@/components/ui/Badge'
@@ -8,7 +9,12 @@ import Footer from '@/components/layout/Footer'
 
 export default function ProjectCaseStudy() {
   const { slug } = useParams<{ slug: string }>()
+  const navigate = useNavigate()
   const project = projects.find((p) => p.slug === slug)
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
 
   if (!project) {
     return <Navigate to="/" replace />
@@ -23,13 +29,14 @@ export default function ProjectCaseStudy() {
         <div className="max-w-3xl mx-auto">
 
           {/* Back link */}
-          <Link
-            to="/#projects"
+          <button
+            type="button"
+            onClick={() => navigate('/', { state: { scrollTo: 'projects' } })}
             className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors mb-10 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
             Back to projects
-          </Link>
+          </button>
 
           {/* Hero */}
           <header className="mb-12">

@@ -1,4 +1,5 @@
-import { Github, ExternalLink, ArrowRight, BookOpen } from 'lucide-react'
+import { useState } from 'react'
+import { Github, ExternalLink, ArrowRight, BookOpen, ChevronDown } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { Project } from '@/types'
 import Badge from './Badge'
@@ -15,6 +16,8 @@ const bulletColors: Record<string, string> = {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const [expanded, setExpanded] = useState(false)
+
   return (
     <article className="flex flex-col h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
       {/* Header */}
@@ -26,24 +29,39 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Tech badges */}
-      <div className="flex flex-wrap gap-1.5 mb-5">
+      <div className="flex flex-wrap gap-1.5 mb-4">
         {project.tech.map((t) => (
           <Badge key={t}>{t}</Badge>
         ))}
       </div>
 
-      {/* Bullets */}
-      <ul className="space-y-2 mb-6 flex-1">
-        {project.bullets.map((b) => (
-          <li key={b.label} className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-            <span className={`font-semibold ${bulletColors[b.label] ?? 'text-zinc-500'}`}>{b.label}: </span>
-            {b.text}
-          </li>
-        ))}
-      </ul>
+      {/* Collapsible bullets */}
+      <button
+        type="button"
+        onClick={() => setExpanded(prev => !prev)}
+        className="flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors self-center mb-2"
+        aria-expanded={expanded === true}
+      >
+        <ChevronDown
+          size={14}
+          className={`transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+        />
+        {expanded ? 'Hide details' : 'Show details'}
+      </button>
+
+      {expanded && (
+        <ul className="space-y-2 mb-4">
+          {project.bullets.map((b) => (
+            <li key={b.label} className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+              <span className={`font-semibold ${bulletColors[b.label] ?? 'text-zinc-500'}`}>{b.label}: </span>
+              {b.text}
+            </li>
+          ))}
+        </ul>
+      )}
 
       {/* Actions */}
-      <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+      <div className="flex flex-wrap gap-2 pt-4 mt-auto border-t border-zinc-100 dark:border-zinc-800">
         {project.website && (
           <Button as="a" href={project.website} external variant="secondary" size="sm">
             <BookOpen size={14} />
