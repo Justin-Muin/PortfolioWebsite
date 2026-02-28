@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     path: '/projects/:slug',
     element: <ProjectCaseStudy />,
   },
-])
+], { basename: '/PortfolioWebsite' })
 
 export default function App() {
   return <RouterProvider router={router} />
