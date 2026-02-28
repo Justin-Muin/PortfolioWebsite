@@ -20,7 +20,7 @@ export const personalInfo: PersonalInfo = {
   availability: "Open to opportunities from 2025",
   email: "JUSTIN.NATHANAEL912@GMAIL.COM",
   github: "https://github.com/Justin-Muin",
-  linkedin: "[LINKEDIN LINK]",
+  linkedin: "https://www.linkedin.com/in/justin-nathanael-799b833b1/",
   cvLink:
     "https://docs.google.com/document/d/1ppXlP8J3vvglUJi2EyLCzOrq9kmZvY0ehtKtIk2-TXE/edit?usp=sharing",
 

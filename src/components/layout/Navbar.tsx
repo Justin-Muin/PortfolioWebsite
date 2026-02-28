@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Sun, Moon, Github, Download, Menu, X } from 'lucide-react'
+import { Sun, Moon, Github, Linkedin, Download, Menu, X } from 'lucide-react'
 import { useDarkMode } from '@/hooks/useDarkMode'
 import { personalInfo } from '@/data'
 import Button from '@/components/ui/Button'
@@ -70,6 +70,13 @@ export default function Navbar() {
             </Button>
           )}
 
+          {/* LinkedIn */}
+          {personalInfo.linkedin && personalInfo.linkedin !== '[LINKEDIN LINK]' && (
+            <Button as="a" href={personalInfo.linkedin} external variant="ghost" size="sm" aria-label="LinkedIn profile">
+              <Linkedin size={16} />
+            </Button>
+          )}
+
           {/* Dark mode toggle */}
           <button
             onClick={toggle}
@@ -133,6 +140,12 @@ export default function Navbar() {
               <Button as="a" href={personalInfo.github} external variant="secondary" size="sm">
                 <Github size={14} />
                 GitHub
+              </Button>
+            )}
+            {personalInfo.linkedin && personalInfo.linkedin !== '[LINKEDIN LINK]' && (
+              <Button as="a" href={personalInfo.linkedin} external variant="secondary" size="sm">
+                <Linkedin size={14} />
+                LinkedIn
               </Button>
             )}
             <Button
