@@ -1,12 +1,13 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { personalInfo } from '@/data'
+import Container from '@/components/ui/Container'
 
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-neutral-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="border-t border-zinc-200/80 bg-white/50 dark:border-zinc-800/80 dark:bg-neutral-950/70">
+      <Container className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           © {year} {personalInfo.name}. Built with React + Tailwind.
         </p>
@@ -56,7 +57,7 @@ export default function Footer() {
             Contact
           </a>
         </div>
-      </div>
+      </Container>
     </footer>
   )
 }

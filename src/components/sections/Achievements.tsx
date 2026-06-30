@@ -3,22 +3,24 @@ import { Trophy, ChevronDown } from 'lucide-react'
 import { achievements } from '@/data'
 import SectionHeader from '@/components/ui/SectionHeader'
 import RevealWrapper from '@/components/ui/RevealWrapper'
+import Container from '@/components/ui/Container'
+import Surface from '@/components/ui/Surface'
 
 export default function Achievements() {
-  if (achievements.length === 0) return null
-
   const [expanded, setExpanded] = useState<Record<number, boolean>>({})
 
   const toggle = (i: number) =>
     setExpanded(prev => ({ ...prev, [i]: !prev[i] }))
 
+  if (achievements.length === 0) return null
+
   return (
     <section
       id="achievements"
-      className="py-16 sm:py-24 px-4 sm:px-6"
+      className="py-16 sm:py-24"
       aria-label="Achievements"
     >
-      <div className="max-w-6xl mx-auto">
+      <Container>
         <RevealWrapper>
           <SectionHeader label="Achievements" title="Recognition & awards." />
         </RevealWrapper>
@@ -26,9 +28,9 @@ export default function Achievements() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {achievements.map((item, i) => (
             <RevealWrapper key={i} delay={i * 0.08}>
-              <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm flex flex-col">
+              <Surface interactive className="flex h-full flex-col p-6">
                 <div className="flex items-start gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 rounded-lg bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center flex-shrink-0">
                     <Trophy size={16} className="text-amber-500" aria-hidden="true" />
                   </div>
                   <div className="min-w-0">
@@ -61,11 +63,11 @@ export default function Achievements() {
                     {item.description}
                   </p>
                 )}
-              </div>
+              </Surface>
             </RevealWrapper>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

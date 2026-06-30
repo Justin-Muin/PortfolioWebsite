@@ -5,7 +5,6 @@ interface RevealWrapperProps {
   children: React.ReactNode
   delay?: number
   className?: string
-  as?: keyof typeof motion
 }
 
 export default function RevealWrapper({ children, delay = 0, className = '' }: RevealWrapperProps) {
@@ -21,9 +20,9 @@ export default function RevealWrapper({ children, delay = 0, className = '' }: R
     <motion.div
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 18 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-      transition={{ duration: 0.5, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+      initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+      animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : { opacity: 0, y: 20, filter: 'blur(8px)' }}
+      transition={{ duration: 0.58, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
     >
       {children}
     </motion.div>

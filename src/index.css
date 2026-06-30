@@ -5,6 +5,11 @@
 @layer base {
   :root {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  :root.dark {
+    color-scheme: dark;
   }
 
   html {
@@ -13,11 +18,20 @@
   }
 
   body {
-    @apply bg-zinc-50 text-zinc-900 font-sans;
+    @apply bg-[#f7f8fb] text-zinc-900 font-sans;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 248, 251, 0.92)),
+      linear-gradient(135deg, rgba(34, 197, 94, 0.08), transparent 34%),
+      linear-gradient(225deg, rgba(99, 102, 241, 0.09), transparent 38%);
+    background-attachment: fixed;
   }
 
   .dark body {
     @apply bg-neutral-950 text-zinc-100;
+    background-image:
+      linear-gradient(180deg, rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.96)),
+      linear-gradient(135deg, rgba(20, 184, 166, 0.12), transparent 34%),
+      linear-gradient(225deg, rgba(129, 140, 248, 0.12), transparent 40%);
   }
 
   /* Custom focus ring — visible and on-brand */
@@ -32,6 +46,41 @@
   /* Smooth section scroll anchor offset for sticky navbar */
   [id] {
     scroll-margin-top: 5rem;
+  }
+}
+
+@layer components {
+  .section-band {
+    @apply relative overflow-hidden border-y border-zinc-200/70 bg-white/55 dark:border-zinc-800/70 dark:bg-zinc-950/40;
+  }
+
+  .premium-grid {
+    background-image:
+      linear-gradient(rgba(24, 24, 27, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24, 24, 27, 0.055) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+
+  .dark .premium-grid {
+    background-image:
+      linear-gradient(rgba(244, 244, 245, 0.075) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244, 244, 245, 0.075) 1px, transparent 1px);
+  }
+
+  .aurora-field {
+    background:
+      linear-gradient(115deg, transparent 0%, rgba(45, 212, 191, 0.16) 18%, transparent 34%),
+      linear-gradient(145deg, transparent 16%, rgba(99, 102, 241, 0.18) 42%, transparent 60%),
+      linear-gradient(75deg, transparent 35%, rgba(250, 204, 21, 0.12) 58%, transparent 76%);
+    filter: blur(42px);
+  }
+
+  .dark .aurora-field {
+    background:
+      linear-gradient(115deg, transparent 0%, rgba(45, 212, 191, 0.22) 18%, transparent 34%),
+      linear-gradient(145deg, transparent 16%, rgba(129, 140, 248, 0.24) 42%, transparent 60%),
+      linear-gradient(75deg, transparent 35%, rgba(250, 204, 21, 0.14) 58%, transparent 76%);
   }
 }
 
@@ -51,5 +100,9 @@
   /* Text balance for headings */
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
   }
 }

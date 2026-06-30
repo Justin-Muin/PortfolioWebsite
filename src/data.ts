@@ -27,13 +27,13 @@ export const personalInfo: PersonalInfo = {
   // Hero headlines — pick one by changing index in Hero.tsx
   headlines: [
     "Building software that bridges ideas and impact.",
-    "CS student in Japan. Full-stack engineer in training.",
+    "CS student in Japan.",
     "Crafting clean, fast, purposeful software.",
   ],
   subheadline:
-    "Computer Science major studying in Japan, focused on full-stack web development and human-computer interaction.",
+    "Computer Science major focused on web, HCI, and practical machine learning.",
   focus:
-    "I turn ambiguous problems into shipped products — owning work from architecture to deployment.",
+    "I turn ambiguous ideas into usable software.",
 };
 
 // ── Quick Facts (Hero section) ────────────────────────────────────────────────
@@ -46,20 +46,20 @@ export const quickFacts: QuickFact[] = [
 
 // ── About ─────────────────────────────────────────────────────────────────────
 export const aboutParagraph =
-  "I'm an international student studying Information Systems Science and Engineering in Japan, with hands-on experience building full-stack web applications and applying machine learning to real problems. I've led and directed teams across multiple projects, owning work from requirements and design through to delivery. I care about the details — readable code, accessible interfaces, and software that actually solves the problem it set out to.";
+  "I'm an Information Systems Science and Engineering student in Japan. I build web applications, explore machine learning, and like turning messy project ideas into clear, usable products.";
 
 export const aboutHighlights: { icon: string; text: string }[] = [
   {
     icon: "Code2",
-    text: "Full-stack web development — from HTML/CSS/JS fundamentals to React + TypeScript production apps",
+    text: "Web development with React, TypeScript, Tailwind, and backend fundamentals",
   },
   {
     icon: "Cpu",
-    text: "Machine learning & NLP — fine-tuning BERT and IndoBERT for real classification tasks",
+    text: "Machine learning and NLP projects with BERT, IndoBERT, and Python",
   },
   {
     icon: "Users",
-    text: "Ownership mindset — led teams and solo projects from scope to shipped deliverable",
+    text: "Team leadership from planning and scope to delivery",
   },
 ];
 
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     slug: "edu-playground",
     title: "EduPlayground",
     tagline:
-      "Website design for children to learn with a progression monitoring system for parents in support of SDG 4 (Quality Education).",
+      "A playful learning platform with mini-games, profiles, and parent progress tracking.",
     category: "web",
     tech: [
       "React",
@@ -121,22 +121,22 @@ export const projects: Project[] = [
     bullets: [
       {
         label: "Problem",
-        text: "Many \"free\" learning sites are low-quality or ad-filled, often hide better content behind paywalls, and don't let parents clearly track whether children are actually learning or making progress.",
+        text: "Free learning sites are often ad-heavy, low-quality, or hard for parents to monitor.",
       },
       {
         label: "Approach",
-        text: "Built a free, ad-free educational web platform that makes learning feel like play via three interactive mini-games, plus an authenticated progress tracker and customizable child profile (items/badges/hats + language toggle).",
+        text: "Built three mini-games with accounts, progress tracking, rewards, and profile customization.",
       },
       {
         label: "Result",
-        text: "Delivered a working end-to-end app where kids can sign up/sign in, play games repeatedly, earn rewards for personalization, and guardians can view and reset game-play stats (total plays, per-game frequency, favorite game).",
+        text: "Delivered a working app for kids to play and guardians to review progress.",
       },
     ],
     github: "https://github.com/lxymahatma/2025-WebInfo",
     demo: "https://drive.google.com/file/d/1fh1bqorYgZEzctjxg5FoRElyKgv5N86V/view?usp=share_link",
     caseStudy: {
       overview:
-        "A free, ad-free educational web platform designed for children to learn through play, while giving parents clear visibility into their child's progress. Built to support SDG 4 (Quality Education), the platform features three interactive mini-games (Drag & Drop, Timed Quiz, Memory Card), user accounts, a customizable child profile, and a guardian progress dashboard.",
+        "A free educational platform where children learn through mini-games and guardians can track progress. The app includes accounts, rewards, profiles, and a guardian dashboard.",
       role: "Frontend Developer (primary), collaborating closely with the Backend Developer (Node.js/Express) in a 4-person team.",
       responsibilities: [
         "Led frontend development with React + TypeScript (pages, components, UI behavior, state).",
@@ -188,28 +188,28 @@ export const projects: Project[] = [
     slug: "sunrise-dumpling",
     title: "Sunrise Dumpling (Weekly Meal Planner)",
     tagline:
-      "A web-based personalized meal planning platform that helps students choose healthier meals based on health data, preferences, budget, and nearby food options.",
+      "A student meal planner that combines health inputs, budget, nutrition filters, and maps.",
     category: "web",
     tech: ["Vue.js", "Google Maps API", "SQL", "REST API", "Client-Server Architecture"],
     bullets: [
       {
         label: "Problem",
-        text: "Students often struggle to maintain a balanced diet due to busy schedules, limited budgets, and difficulty comparing nearby meal options with nutrition information. Existing options are often inconvenient and not personalized.",
+        text: "Students need healthier meal choices that fit time, budget, and nearby options.",
       },
       {
         label: "Approach",
-        text: "Led a team in building a personalized meal planning web platform that gathers user health and preference data, generates meal suggestions using TDEE-based analysis, supports filtering (price, ingredients, nutrients, distance), and displays nearby stores/restaurants using Google Maps API.",
+        text: "Led a team building personalized suggestions, filters, and Google Maps support.",
       },
       {
         label: "Result",
-        text: "Delivered a working prototype with account management flows, personalized meal suggestion and filtering workflows, and map-based planning support, backed by complete requirements, system design diagrams, and architecture documentation.",
+        text: "Delivered a working prototype plus requirements, design, and architecture docs.",
       },
     ],
     website: "https://www.notion.so/PBL3-group-H-133976579ee44f66a529fbf88355a327",
     demo: "https://drive.google.com/file/d/1-9TCoOvALS4ZarFvbXVucfFijCo4X4Xi/view?usp=sharing",
     caseStudy: {
       overview:
-        "Sunrise Dumpling is a web-based weekly meal planning system designed to help students make healthier and more practical food choices. The platform combines personalized meal recommendations with budget and nutrition filters, then maps nearby food locations to make meal planning more actionable in real life.",
+        "A weekly meal planning prototype for students. It combines personalized suggestions, nutrition and budget filters, and nearby food locations.",
       role: "Project Leader (7-person team)",
       responsibilities: [
         "Directed project planning, task allocation, and progress tracking across a 7-person team.",
@@ -266,27 +266,27 @@ export const projects: Project[] = [
     slug: "osaka-student-corner",
     title: "Osaka Student Corner (Student Utility Corner)",
     tagline:
-      "An all-in-one student utility website that combines academic planning and study tools in one place to make university life easier.",
+      "An all-in-one student utility site for GPA, planning, profiles, and study support.",
     category: "web",
     tech: ["HTML", "CSS", "JavaScript"],
     bullets: [
       {
         label: "Problem",
-        text: "University students often need multiple separate tools for academic life (scheduling, GPA calculation, study/revision support, account management), making planning and studying fragmented and less efficient.",
+        text: "Student tools are fragmented across scheduling, GPA, study, and profile needs.",
       },
       {
         label: "Approach",
-        text: "Led a team to design and prototype an integrated web platform for university students with core features including Profile/Account, GPA Calculator, Study Planner/Schedule, and peer engagement features (Discussion Forum / Challenges).",
+        text: "Directed a prototype combining GPA, planning, account, and engagement features.",
       },
       {
         label: "Result",
-        text: "Delivered a working project prototype and final presentation covering feature layouts, UI progress for account/profile pages, GPA calculator, scheduling/planner, and student engagement features, plus documented target users, development effort estimates, advantages, and future plans.",
+        text: "Delivered a cohesive prototype and final product presentation.",
       },
     ],
     github: "https://github.com/Justin-Muin/PBL4Web",
     caseStudy: {
       overview:
-        "Osaka Student Corner (also presented as Student Utility Corner) is a web project designed to solve a practical student problem: there is no single website that combines the different tools university students commonly need for academic life. The platform brings together a GPA calculator, study planner/schedule, profile/account management, and a student engagement feature (presented as Discussion Forum in one deck and Challenges in the final deck).",
+        "An all-in-one student utility prototype for academic planning. It combines GPA calculation, scheduling, profiles, and student engagement features.",
       role: "Project Director (team project)",
       responsibilities: [
         "Directed project planning and overall execution for the team, shaping the website concept around a real student pain point (tool fragmentation).",
@@ -344,26 +344,26 @@ export const projects: Project[] = [
     slug: "indonesian-sentiment-analysis",
     title: "Indonesian Sentiment Analysis & Urgency Detection for YouTube Comments",
     tagline:
-      "A machine learning project that classifies Indonesian YouTube comments by sentiment and urgency, helping companies prioritize important feedback faster.",
+      "An NLP classifier for Indonesian YouTube comment sentiment and urgency.",
     category: "ml",
     tech: ["Python", "IndoBERT", "Hugging Face Transformers", "Web Scraping", "K-fold Cross-Validation"],
     bullets: [
       {
         label: "Problem",
-        text: "Many companies in Indonesia rely on social media feedback (especially YouTube comments), but manually reviewing large volumes of comments is slow and not scalable. Standard sentiment labels alone (positive/neutral/negative) are not enough to surface which comments require urgent attention.",
+        text: "Manual review of large comment volumes is slow, and sentiment alone misses urgency.",
       },
       {
         label: "Approach",
-        text: "Built an Indonesian short-text classification pipeline using scraped YouTube comments, manual annotation, and IndoBERT fine-tuning to classify both sentiment polarity and urgency level, including experiments with separate models and a multitask model.",
+        text: "Scraped, annotated, and fine-tuned IndoBERT for sentiment and urgency labels.",
       },
       {
         label: "Result",
-        text: "Developed a working sentiment + urgency classification prototype, evaluated with 5-fold cross-validation using F1 score and accuracy, with the presentation noting stronger performance from the multitask model and higher urgency accuracy.",
+        text: "Built and evaluated a working prototype with 5-fold cross-validation.",
       },
     ],
     caseStudy: {
       overview:
-        "A solo NLP project focused on Indonesian YouTube comment analysis for business feedback triage. Instead of only predicting sentiment (positive/neutral/negative), I added an urgency detection task so companies can quickly identify comments that require immediate attention, reducing the need for manual filtering.",
+        "A solo NLP project for Indonesian YouTube comment triage. It predicts both sentiment and urgency so important feedback can be surfaced faster.",
       role: "Solo Developer / Researcher (end-to-end project ownership)",
       responsibilities: [
         "Defined the project scope and research questions for Indonesian sentiment and urgency classification on YouTube comments.",
@@ -427,26 +427,26 @@ export const projects: Project[] = [
     slug: "bert-abstract-classification",
     title: "Scientific Abstract Classification with BERT",
     tagline:
-      "A beginner AI/NLP project that fine-tunes BERT to classify scientific abstracts into Astronomy, Sociology, or Psychology.",
+      "A BERT classifier for Astronomy, Sociology, and Psychology abstracts.",
     category: "ml",
     tech: ["Python", "BERT", "Hugging Face Transformers", "scikit-learn", "arXiv API", "Pandas"],
     bullets: [
       {
         label: "Problem",
-        text: "Text classification is useful for organizing large amounts of text, but natural language is context-dependent and difficult to classify accurately with manual methods or simpler models. This project focuses on classifying scientific abstracts into three fields: Astronomy, Sociology, and Psychology.",
+        text: "Scientific abstracts are hard to organize manually at scale.",
       },
       {
         label: "Approach",
-        text: "Collected 900 abstracts from the arXiv API (300 per field), applied minimal preprocessing (duplicate removal + validation), labeled the classes numerically, and fine-tuned BERT base uncased for 3-class classification using Stratified K-Fold cross-validation.",
+        text: "Collected 900 arXiv abstracts and fine-tuned BERT with stratified K-fold validation.",
       },
       {
         label: "Result",
-        text: "Achieved strong cross-validation performance with Accuracy = 0.960 ± 0.011, Precision = 0.961 ± 0.011, Recall = 0.960 ± 0.011, and F1 = 0.960 ± 0.011, showing that the fine-tuned BERT model performed well on this learning task.",
+        text: "Reached about 0.96 accuracy, precision, recall, and F1.",
       },
     ],
     caseStudy: {
       overview:
-        "A learning-focused AI project for my Artificial Intelligence course, where I built a text classification model using BERT to categorize scientific abstracts into Astronomy, Sociology, and Psychology. The goal was to practice the full NLP workflow — from data collection and preprocessing to fine-tuning and evaluation — using a modern transformer-based model.",
+        "A course project using BERT to classify scientific abstracts into Astronomy, Sociology, or Psychology. It covers data collection, preprocessing, fine-tuning, and evaluation.",
       role: "Solo Developer (course project)",
       responsibilities: [
         "Defined the project scope and classification task (3-class scientific abstract classification).",
@@ -507,8 +507,7 @@ export const projects: Project[] = [
 export const experience: ExperienceItem[] = [
   {
     role: "Software Engineering Intern",
-    org: "[COMPANY NAME]",
-    orgUrl: "[COMPANY URL]",
+    org: "Company name withheld",
     startDate: "Jun 2024",
     endDate: "Aug 2024",
     location: "Japan (Hybrid)",
@@ -520,7 +519,7 @@ export const experience: ExperienceItem[] = [
   },
   {
     role: "Technical Lead — Student Engineering Club",
-    org: "[UNIVERSITY NAME] Engineering Club",
+    org: "Ritsumeikan University Engineering Club",
     startDate: "Apr 2023",
     endDate: "Mar 2024",
     location: "Japan",

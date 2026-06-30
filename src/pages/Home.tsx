@@ -22,6 +22,12 @@ export default function Home() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white dark:focus:bg-zinc-50 dark:focus:text-zinc-950"
+      >
+        Skip to content
+      </a>
       <Navbar />
       <main id="main-content">
         <Hero />

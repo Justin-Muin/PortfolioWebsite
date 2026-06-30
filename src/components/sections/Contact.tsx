@@ -4,6 +4,8 @@ import { personalInfo } from "@/data";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
 import RevealWrapper from "@/components/ui/RevealWrapper";
+import Container from "@/components/ui/Container";
+import Surface from "@/components/ui/Surface";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -23,23 +25,22 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-24 px-4 sm:px-6 bg-zinc-100/50 dark:bg-zinc-900/30"
+      className="section-band py-16 sm:py-24"
       aria-label="Contact"
     >
-      <div className="max-w-6xl mx-auto">
+      <Container>
         <RevealWrapper>
           <SectionHeader
             label="Contact"
             title="Let's talk."
-            description="Open to internships, part-time roles, and project collaborations."
+            description="Open to internships, part-time roles, and collaborations."
             centered
           />
         </RevealWrapper>
 
         <RevealWrapper delay={0.1}>
           <div className="max-w-lg mx-auto">
-            {/* Email block */}
-            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm mb-6">
+            <Surface className="mb-6 p-6">
               <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-3">
                 Email
               </p>
@@ -62,9 +63,8 @@ export default function Contact() {
                   )}
                 </button>
               </div>
-            </div>
+            </Surface>
 
-            {/* Social links */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {personalInfo.linkedin &&
                 personalInfo.linkedin !== "[LINKEDIN LINK]" && (
@@ -96,16 +96,15 @@ export default function Contact() {
                 )}
             </div>
 
-            {/* Quick compose mailto */}
-            <div className="bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6">
+            <Surface className="p-6">
               <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4 text-center">
                 Or send a quick message directly:
               </p>
               <ContactForm email={personalInfo.email} />
-            </div>
+            </Surface>
           </div>
         </RevealWrapper>
-      </div>
+      </Container>
     </section>
   );
 }
@@ -142,7 +141,7 @@ function ContactForm({ email }: { email: string }) {
           value={form.name}
           onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
           placeholder="Jane Smith"
-          className="w-full px-3 py-2.5 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-accent-dark transition-colors"
+          className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 focus:ring-accent dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:ring-accent-dark"
         />
       </div>
       <div>
@@ -159,7 +158,7 @@ function ContactForm({ email }: { email: string }) {
           value={form.email}
           onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
           placeholder="jane@company.com"
-          className="w-full px-3 py-2.5 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-accent-dark transition-colors"
+          className="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 focus:ring-accent dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:ring-accent-dark"
         />
       </div>
       <div>
@@ -176,7 +175,7 @@ function ContactForm({ email }: { email: string }) {
           value={form.message}
           onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
           placeholder="Hi! I'm reaching out about..."
-          className="w-full px-3 py-2.5 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-accent dark:focus:ring-accent-dark transition-colors resize-none"
+          className="w-full resize-none rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 placeholder-zinc-400 transition-colors focus:outline-none focus:ring-2 focus:ring-accent dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:ring-accent-dark"
         />
       </div>
       <Button

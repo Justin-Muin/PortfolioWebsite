@@ -2,15 +2,17 @@ import { Briefcase, MapPin } from 'lucide-react'
 import { experience } from '@/data'
 import SectionHeader from '@/components/ui/SectionHeader'
 import RevealWrapper from '@/components/ui/RevealWrapper'
+import Container from '@/components/ui/Container'
+import Surface from '@/components/ui/Surface'
 
 export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-16 sm:py-24 px-4 sm:px-6 bg-zinc-100/50 dark:bg-zinc-900/30"
+      className="section-band py-16 sm:py-24"
       aria-label="Experience"
     >
-      <div className="max-w-6xl mx-auto">
+      <Container>
         <RevealWrapper>
           <SectionHeader
             label="Experience"
@@ -36,12 +38,12 @@ export default function Experience() {
                     aria-hidden="true"
                   />
 
-                  <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 shadow-sm">
+                  <Surface interactive className="p-6">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                       <div>
                         <div className="flex items-center gap-2 mb-1">
-                          <Briefcase size={14} className="text-accent dark:text-accent-dark flex-shrink-0" aria-hidden="true" />
-                          <h3 className="font-display font-semibold text-zinc-900 dark:text-zinc-50">{item.role}</h3>
+                          <Briefcase size={14} className="text-teal-500 flex-shrink-0" aria-hidden="true" />
+                          <h3 className="font-display font-semibold text-zinc-950 dark:text-zinc-50">{item.role}</h3>
                         </div>
                         <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
                           {item.orgUrl ? (
@@ -63,7 +65,7 @@ export default function Experience() {
                         </div>
                       </div>
 
-                      <span className="text-xs font-medium text-zinc-400 dark:text-zinc-500 whitespace-nowrap bg-zinc-100 dark:bg-zinc-800 px-3 py-1 rounded-full self-start">
+                      <span className="self-start whitespace-nowrap rounded-md bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-500 dark:bg-zinc-900 dark:text-zinc-500">
                         {item.startDate} — {item.endDate}
                       </span>
                     </div>
@@ -76,13 +78,13 @@ export default function Experience() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </Surface>
                 </div>
               </RevealWrapper>
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

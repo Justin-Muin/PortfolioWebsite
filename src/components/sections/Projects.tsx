@@ -4,6 +4,8 @@ import type { Project } from '@/types'
 import SectionHeader from '@/components/ui/SectionHeader'
 import ProjectCard from '@/components/ui/ProjectCard'
 import RevealWrapper from '@/components/ui/RevealWrapper'
+import Container from '@/components/ui/Container'
+import { motion, useReducedMotion } from 'framer-motion'
 
 type Category = 'all' | Project['category']
 
@@ -17,36 +19,43 @@ const categories: { value: Category; label: string }[] = [
 
 export default function Projects() {
   const [active, setActive] = useState<Category>('all')
+  const shouldReduceMotion = useReducedMotion()
 
   const filtered = active === 'all' ? projects : projects.filter((p) => p.category === active)
 
   return (
-    <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6" aria-label="Projects">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-16 sm:py-24" aria-label="Projects">
+      <Container>
         <RevealWrapper>
           <SectionHeader
             label="Projects"
             title="Things I've built."
-            description="Selected projects across web, systems, and machine learning."
+            description="Selected web and machine learning work."
           />
         </RevealWrapper>
 
         {/* Category filter */}
         <RevealWrapper delay={0.1}>
-          <div className="flex flex-wrap gap-2 mb-10" role="tablist" aria-label="Filter projects by category">
+          <div className="mb-10 inline-flex max-w-full flex-wrap gap-1 rounded-lg border border-zinc-200/80 bg-white/70 p-1 shadow-sm backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/70" role="tablist" aria-label="Filter projects by category">
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 role="tab"
                 aria-selected={active === cat.value}
                 onClick={() => setActive(cat.value)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                  active === cat.value
-                    ? 'bg-accent text-white dark:bg-accent-dark dark:text-neutral-950'
-                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+                className={`relative rounded-md px-4 py-2 text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  active === cat.value ? 'text-white dark:text-neutral-950' : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100'
                 }`}
               >
-                {cat.label}
+                {active === cat.value && (
+                  <motion.span
+                    layoutId="project-filter-pill"
+                    className="absolute inset-0 rounded-md bg-zinc-950 dark:bg-zinc-50"
+                    transition={shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 34 }}
+                    aria-hidden="true"
+                  />
+                )}
+                <span className="relative z-10">{cat.label}</span>
               </button>
             ))}
           </div>
@@ -64,7 +73,7 @@ export default function Projects() {
         {filtered.length === 0 && (
           <p className="text-center text-zinc-400 dark:text-zinc-600 py-12">No projects in this category yet.</p>
         )}
-      </div>
+      </Container>
     </section>
   )
 }

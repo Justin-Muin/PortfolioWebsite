@@ -10,14 +10,15 @@ export default function SectionHeader({ label, title, description, centered = fa
 
   return (
     <div className={`flex flex-col ${align} mb-8 sm:mb-12`}>
-      <span className="text-xs font-semibold tracking-widest uppercase text-accent dark:text-accent-dark mb-3">
+      <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase text-accent dark:text-accent-dark">
+        <span className="h-px w-5 bg-current" aria-hidden="true" />
         {label}
       </span>
-      <h2 className="font-display text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-zinc-50 text-balance leading-tight">
+      <h2 className="font-display text-3xl sm:text-4xl font-bold text-zinc-950 dark:text-zinc-50 text-balance leading-tight">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed">{description}</p>
+        <p className="mt-4 max-w-xl text-zinc-600 leading-relaxed dark:text-zinc-400">{description}</p>
       )}
     </div>
   )
