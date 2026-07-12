@@ -22,7 +22,7 @@ export const personalInfo: PersonalInfo = {
   github: "https://github.com/Justin-Muin",
   linkedin: "https://www.linkedin.com/in/justin-nathanael-799b833b1/",
   cvLink:
-    "https://docs.google.com/document/d/1ppXlP8J3vvglUJi2EyLCzOrq9kmZvY0ehtKtIk2-TXE/edit?usp=sharing",
+    "https://docs.google.com/document/d/1fhc0Shhgds26I_9zR7PkWKBGXiXY-kVvcW3pBPjbxdc/edit?usp=sharing",
 
   // Hero headlines — pick one by changing index in Hero.tsx
   headlines: [

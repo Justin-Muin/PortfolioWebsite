@@ -9,6 +9,9 @@ import Projects from '@/components/sections/Projects'
 import Education from '@/components/sections/Education'
 import Achievements from '@/components/sections/Achievements'
 import Contact from '@/components/sections/Contact'
+import ScrollProgress from '@/components/ui/ScrollProgress'
+import TechMarquee from '@/components/ui/TechMarquee'
+import BackToTop from '@/components/ui/BackToTop'
 
 export default function Home() {
   const { state } = useLocation()
@@ -28,9 +31,11 @@ export default function Home() {
       >
         Skip to content
       </a>
+      <ScrollProgress />
       <Navbar />
       <main id="main-content">
         <Hero />
+        <TechMarquee />
         <About />
         <Skills />
         <Projects />
@@ -39,6 +44,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }

@@ -10,7 +10,7 @@ interface RevealWrapperProps {
 export default function RevealWrapper({ children, delay = 0, className = '' }: RevealWrapperProps) {
   const ref = useRef<HTMLDivElement>(null)
   const shouldReduceMotion = useReducedMotion()
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -60px 0px' })
 
   if (shouldReduceMotion) {
     return <div className={className}>{children}</div>

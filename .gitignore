@@ -16,3 +16,6 @@ dist/
 .DS_Store
 .vscode/
 *.swp
+
+# Claude Code local tooling
+.claude/

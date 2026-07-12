@@ -7,18 +7,46 @@ import Button from '@/components/ui/Button'
 import Container from '@/components/ui/Container'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'Projects', href: '#projects', id: 'projects' },
+  { label: 'Education', href: '#education', id: 'education' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ]
+
+// Stable reference so useActiveSection's observer isn't recreated each render.
+const sectionIds = navLinks.map((link) => link.id)
+
+function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState<string | null>(null)
+
+  useEffect(() => {
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null)
+    if (sections.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id)
+        }
+      },
+      { rootMargin: '-35% 0px -55% 0px' },
+    )
+    sections.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [ids])
+
+  return active
+}
 
 export default function Navbar() {
   const { isDark, toggle } = useDarkMode()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const shouldReduceMotion = useReducedMotion()
+  const activeSection = useActiveSection(sectionIds)
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 14)
@@ -42,7 +70,7 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 py-3">
       <Container>
         <nav
-          className={`flex h-14 items-center justify-between rounded-lg border px-3 transition duration-300 sm:px-4 ${
+          className={`flex h-14 items-center justify-between rounded-2xl border px-3 transition duration-300 sm:px-4 ${
             scrolled
               ? 'border-zinc-200/80 bg-white/82 shadow-[0_10px_35px_rgba(24,24,27,0.08)] backdrop-blur-xl dark:border-zinc-800/80 dark:bg-neutral-950/80 dark:shadow-[0_18px_45px_rgba(0,0,0,0.28)]'
               : 'border-transparent bg-white/48 backdrop-blur-md dark:bg-neutral-950/42'
@@ -54,23 +82,51 @@ export default function Navbar() {
             className="group inline-flex items-center gap-2 rounded-md pr-2 font-display text-sm font-semibold text-zinc-950 transition-colors hover:text-accent dark:text-zinc-50 dark:hover:text-accent-dark"
             aria-label="Go to top"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-md bg-zinc-950 text-xs font-bold text-white shadow-sm dark:bg-zinc-50 dark:text-neutral-950">
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-indigo-500 via-violet-500 to-teal-500 text-xs font-bold text-white shadow-sm transition-transform duration-300 group-hover:rotate-6">
               JM
             </span>
             <span className="hidden sm:inline">{personalInfo.name.split(' ')[0]}</span>
           </a>
 
           <ul className="hidden items-center gap-1 md:flex" role="list">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-zinc-600 transition hover:bg-zinc-100/80 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id
+              return (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={`relative rounded-lg px-3 py-2 text-sm font-medium transition ${
+                      isActive
+                        ? 'text-zinc-950 dark:text-zinc-50'
+                        : 'text-zinc-600 hover:bg-zinc-100/80 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100'
+                    }`}
+                    aria-current={isActive ? 'true' : undefined}
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="absolute inset-0 rounded-lg bg-zinc-100/90 ring-1 ring-zinc-200/80 dark:bg-zinc-900 dark:ring-zinc-800"
+                        transition={
+                          shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 32 }
+                        }
+                        aria-hidden="true"
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-dot"
+                        className="absolute -bottom-0.5 left-1/2 z-10 h-1 w-1 -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500 to-teal-400"
+                        transition={
+                          shouldReduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 32 }
+                        }
+                        aria-hidden="true"
+                      />
+                    )}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
 
           <div className="hidden items-center gap-2 md:flex">
@@ -129,7 +185,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={shouldReduceMotion ? undefined : { opacity: 0, y: -8, scale: 0.98 }}
               transition={{ duration: 0.18 }}
-              className="mt-2 overflow-hidden rounded-lg border border-zinc-200/80 bg-white/92 p-2 shadow-xl backdrop-blur-xl dark:border-zinc-800 dark:bg-neutral-950/92 md:hidden"
+              className="mt-2 overflow-hidden rounded-2xl border border-zinc-200/80 bg-white/92 p-2 shadow-xl backdrop-blur-xl dark:border-zinc-800 dark:bg-neutral-950/92 md:hidden"
             >
               <ul className="flex flex-col gap-1" role="list">
                 {navLinks.map((link) => (
@@ -137,7 +193,7 @@ export default function Navbar() {
                     <a
                       href={link.href}
                       onClick={handleNavClick}
-                      className="block rounded-md px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
+                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
                     >
                       {link.label}
                     </a>

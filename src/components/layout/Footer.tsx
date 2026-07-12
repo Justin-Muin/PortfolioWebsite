@@ -6,7 +6,8 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-zinc-200/80 bg-white/50 dark:border-zinc-800/80 dark:bg-neutral-950/70">
+    <footer className="relative border-t border-zinc-200/80 bg-white/50 dark:border-zinc-800/80 dark:bg-neutral-950/70">
+      <div className="gradient-hairline absolute inset-x-0 top-0 h-px" aria-hidden="true" />
       <Container className="flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
           © {year} {personalInfo.name}. Built with React + Tailwind.
@@ -17,7 +18,7 @@ export default function Footer() {
             <a
               href={`mailto:${personalInfo.email}`}
               aria-label="Email"
-              className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+              className="rounded text-zinc-400 transition-colors hover:text-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:hover:text-indigo-300"
             >
               <Mail size={18} />
             </a>
@@ -28,7 +29,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+              className="rounded text-zinc-400 transition-colors hover:text-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:hover:text-indigo-300"
             >
               <Github size={18} />
             </a>
@@ -39,21 +40,21 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+              className="rounded text-zinc-400 transition-colors hover:text-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:hover:text-indigo-300"
             >
               <Linkedin size={18} />
             </a>
           )}
         </div>
 
-        <div className="flex gap-4 text-xs text-zinc-400 dark:text-zinc-500">
-          <a href="#" className="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+        <div className="flex gap-4 font-mono text-xs text-zinc-400 dark:text-zinc-500">
+          <a href="#" className="transition-colors hover:text-zinc-600 dark:hover:text-zinc-300">
             Top
           </a>
-          <a href="#projects" className="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+          <a href="#projects" className="transition-colors hover:text-zinc-600 dark:hover:text-zinc-300">
             Projects
           </a>
-          <a href="#contact" className="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+          <a href="#contact" className="transition-colors hover:text-zinc-600 dark:hover:text-zinc-300">
             Contact
           </a>
         </div>
